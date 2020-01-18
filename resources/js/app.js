@@ -1,14 +1,23 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+
 
 require('./bootstrap');
-require('./admin-lte');
+// require('./admin-lte');
 
 window.Vue = require('vue');
 
+import VueRouter from "vue-router"
+Vue.use(VueRouter)
+
+
+
+let routes = [
+    {path: '/dashboard', component:require('./components/Dashboard.vue')},
+    {path: '/profile', component:require('./components/Profile.vue')},
+]
+
+const router = new VueRouter({
+    routes
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -30,4 +39,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    router
 });
